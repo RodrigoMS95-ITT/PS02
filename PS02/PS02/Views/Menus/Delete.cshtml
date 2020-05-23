@@ -1,0 +1,76 @@
+﻿@model PS02.Models.Menu
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+
+
+    <div class="masthead">
+        <div class="masthead-content space">
+            <div class="container">
+                <h2>Eliminar</h2>
+
+                <h3>¿Seguro que quieres eliminarlo?</h3>
+                <div>
+                    <h4>Menu</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Nombre)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Descripcion)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Precio)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Precio)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Tipo)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Tipo)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Img)
+                        </dt>
+
+                        <dd>
+                            <img style="width:100px; height:75px;" src="@Url.Action("getimage", "Menus", new{ id=Model.ID})" alt="ImgComida" />
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                            @Html.ActionLink("Regresar", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

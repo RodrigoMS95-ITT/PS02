@@ -1,0 +1,66 @@
+﻿@model PS02.Models.Reporte
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (User.Identity.IsAuthenticated)
+{
+
+
+    <div class="masthead">
+        <div class="masthead-content space">
+            <div class="container">
+                <h2>Detalles</h2>
+
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Menu.Nombre)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Menu.Nombre)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Cliente)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Cliente)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Cantidad)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Cantidad)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Total)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Total)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Estatus)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Estatus)
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Regresar", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
+}

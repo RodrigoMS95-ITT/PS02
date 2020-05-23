@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PS02.Models.Menu>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="masthead">
+    <div class="masthead-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="container d-flex align-items-center flex-column">
+                    <a href="@Url.Action("Index","Home")"><h1 class="masthead-heading text-uppercase text-primary mb-0">Star coffee</h1></a>
+                    <p class="masthead-subheading font-weight-light text-primary mb-0">- Disfruta el momento -</p>
+                </div>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p>
+                    <a href="@Url.Action("Create", "Menus")" class="btn btn-primary btn-sm btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Nueva entrada</span>
+                    </a>
+                </p>
+            }
+            <div class="row justify-content-center">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-md-6 mb-4 justify-content-center">
+                        <div class="card border-left-primary shadow h-100 py-2 col mr-2 justify-content-center">
+                            <h5 class="font-weight-bold text-primary text-uppercase mb-1">@item.Nombre</h5>
+                            <a><img width="100"  src="@Url.Action("getImage", "Menus", new { id = item.ID})" alt="" /></a>
+                            <p>@item.Descripcion</p>
+                            <p>$@item.Precio</p>
+
+                            <a class="btn btn-default btn-primary" href="@Url.Action("Create","Reportes")">Ordenar</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                        <div>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-default btn-success" })
+                            @Html.ActionLink("Detalles", "Details", new { id = item.ID }, new { @class = "btn btn-default btn-primary" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "btn btn-default btn-danger" })
+
+                        </div>
+
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

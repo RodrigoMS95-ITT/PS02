@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PS02.Models.Reporte>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <div class="masthead">
+        <div class="masthead-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="container d-flex align-items-center flex-column">
+                        <h1 class="masthead-heading text-uppercase text-primary mb-0">Star coffee</h1>
+                        <p class="masthead-subheading font-weight-light text-primary mb-0">- Disfruta el momento -</p>
+                    </div>
+                </div>
+                <p>
+                    <a href="@Url.Action("Create", "Reportes")" class="btn btn-primary btn-sm btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        <span class="text">Nueva entrada</span>
+                    </a>
+                    <span>
+
+                        <a href="@Url.Action("Index", "Menus")" class="btn btn-primary btn-sm btn-icon-split">
+                            <span class="text">Regresar al menú</span>
+                        </a>
+                    </span>
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Menu.Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cliente)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cantidad)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Total)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estatus)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Menu.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cliente)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cantidad)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Total)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estatus)
+                            </td>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <td>
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-default btn-success" }) |
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.ID }, new { @class = "btn btn-default btn-primary" }) |
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID }, new { @class = "btn btn-default btn-danger" })
+                                </td>
+                            }
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,67 @@
+﻿@model PS02.Models.Menu
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (User.Identity.IsAuthenticated)
+{
+
+
+    <div class="masthead">
+        <div class="masthead-content space">
+            <div class="container">
+                <h2>Detalles</h2>
+
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Nombre)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Descripcion)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Precio)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Precio)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Tipo)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Tipo)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Img)
+                        </dt>
+
+                        <dd>
+                            <img style="width:100px; height:80px;" src="@Url.Action("getimage", "Menus", new{ id=Model.ID})" alt="ImgComida" />
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                   
+                    @Html.ActionLink("Regresar", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
+}
